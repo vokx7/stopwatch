@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Button } from "./Button"
 import { TotalTime } from "./TotalTime"
+import { LapTable } from "./LapTable";
+import { Container } from "./Container";
 
 export const Stopwatch = () => {
     const [start, setStart] = useState(false);
@@ -22,12 +24,16 @@ export const Stopwatch = () => {
          
 
 
-    return <>
+    return <Container>
         <TotalTime time={{
            minutes: Math.floor(counter / 6000),
            seconds: Math.floor((counter % 6000) / 100),
            milliseconds: counter % 100
         }}/>
+        <div className="flex flex-row justify-between">
+        <Button title={"Lap"} color={start ? "text-red-500" : "text-green-500"} backgroundColor={"bg-white"} onClick={toggleStopwatch}/>
         <Button title={start ? "Stop" : "Start"} color={start ? "text-red-500" : "text-green-500"} backgroundColor={"bg-white"} onClick={toggleStopwatch}/>
-    </>
+        </div>
+        <LapTable/>
+    </Container>
 }

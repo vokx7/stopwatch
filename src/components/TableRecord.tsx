@@ -10,13 +10,8 @@ type TableRecordProps = {
 }
 
 export const TableRecord = ({time, lap}:TableRecordProps) => {
-    const {minutes, seconds, milliseconds} = time
-    return <div className="flex flex-row justify-between">
+    return <div className="flex flex-row justify-between not-prose py-1">
         <p>Lap {lap}</p>
-        <LapTime time={{
-            minutes: minutes,
-            seconds: seconds,
-            milliseconds: milliseconds
-        }}/>
+        <LapTime time={time}/>
     </div>
 }

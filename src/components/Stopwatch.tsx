@@ -33,6 +33,11 @@ export const Stopwatch = () => {
     setLaps((prevLap) => [...prevLap, lapTime]);
   };
 
+  const clearStopwatch = () => {
+    setCounter(0);
+    setLaps([]);
+  }
+
   return (
     <Container>
         <div className="flex-1 flex flex-col justify-end">
@@ -45,8 +50,8 @@ export const Stopwatch = () => {
       />
       <div className="flex flex-row justify-between py-4">
         <Button
-          onClick={handleLap}
-          title={"Lap"}
+          onClick={start ? handleLap : clearStopwatch}
+          title={start || counter === 0 ? "Lap" : "Clear"}
           disabled={counter === 0}
         />
         <Button
